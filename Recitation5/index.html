@@ -24,7 +24,7 @@
 <p style="font-size: 16px; color: #999; margin:5px; position: absolute;"><a href="..">Homepage</a> | <a href="?print-pdf">Printable Version</a></p>
 <div style="display: flex; justify-content: center; align-items: center; height: 700px;">
   <div style="text-align: center; padding: 40px; background-color: white; border: 2px solid rgb(0, 63, 163); border-radius: 20px; box-shadow: 0 0 20px rgba(0,0,0,0.1);">
-    <h1 style="font-size: 48px; font-weight: bold; margin-bottom: 20px; color: #333;">SI100B Fall 2025 Recitation 4</h1>
+    <h1 style="font-size: 48px; font-weight: bold; margin-bottom: 20px; color: #333;">SI100B Fall 2025 Recitation 5</h1>
     <p style="font-size: 24px; color: #666;">L9 & L10 回顾</p>
     <p style="font-size: 16px; color: #999; margin-top: 20px; margin-bottom:5px">SI100B 2025 Staff | 2025-10-24</p>
   </div>
@@ -816,6 +816,37 @@ def factorial_tail_recursive(n, accumulator=1):
 
 <!--v-->
 ## T2  Image Linear Enhancement 
+### 1. Common Mistakes
+
+**·** Half-away-from-zero rounding rule
+
+```python
+# Wrong way
+y_q = round(y)  # For y = 2.5, y_q = 2! 
+
+# Correct way
+y_q = floor(y + 0.5)
+```
+<!--v-->
+### 2. Reference Implementation
+```python
+from math import floor
+from typing import List
+n = int(input())
+pixels = list(map(int, input().split()))
+a, b = map(float, input().split())
+low, high = map(int, input().split())
+result: List[int] = []
+for x in pixels:
+    # Linear transform
+    y = a * x + b
+    # Quantization
+    y_q = floor(y + 0.5)
+    # Clipping
+    y_out = min(max(y_q, low), high)
+    result.append(y_out)
+print(' '.join(map(str, result)))
+```
 <!--v-->
 ## T3 Simplified Match-3 Puzzle Game
 
