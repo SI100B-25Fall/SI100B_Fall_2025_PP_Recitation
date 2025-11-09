@@ -412,8 +412,6 @@ def read_config_file(config_path):
 ```
 <!--v-->
 
-## Detailed Error Context
-
 ```python
   except FileNotFoundError:
     print(f"❌ Config file not found: {config_path}")
